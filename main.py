@@ -6,7 +6,7 @@ from openai import OpenAI
 from helper.llm_client import get_completion 
 
 client = OpenAI(base_url="http://localhost:1234/v1", api_key="lm-studio")
-model_path = r"/Users/karthiknamboori/.cache/lm-studio/models/lmstudio-community/gemma-2-2b-it-GGUF"
+model_path = r"D:/work/sem 7/Large Language Models/models/lmstudio-community/gemma-2-2b-it-GGUF/gemma-2-2b-it-Q4_K_M.gguf"
 
 DB_PATH = "database/elections.db"
 
@@ -72,13 +72,13 @@ def get_detailed_schema():
             }
             
             # Get sample data (first 3 rows)
-            try:
-                cursor.execute(f"SELECT * FROM {table_name} LIMIT 3;")
-                sample_data = cursor.fetchall()
-                column_names = [description[0] for description in cursor.description]
-                table_info['sample_data'] = [dict(zip(column_names, row)) for row in sample_data]
-            except sqlite3.Error as e:
-                table_info['sample_data'] = f"Error fetching sample data: {str(e)}"
+            # try:
+            #     cursor.execute(f"SELECT * FROM {table_name} LIMIT 3;")
+            #     sample_data = cursor.fetchall()
+            #     column_names = [description[0] for description in cursor.description]
+            #     table_info['sample_data'] = [dict(zip(column_names, row)) for row in sample_data]
+            # except sqlite3.Error as e:
+            #     table_info['sample_data'] = f"Error fetching sample data: {str(e)}"
             
             schema_info[table_name] = table_info
             
@@ -104,10 +104,10 @@ def generate_sql_query(question):
                 schema_context += " NOT NULL"
             schema_context += "\n"
         
-        schema_context += "\nSample Data:\n"
-        if isinstance(info['sample_data'], list):
-            for row in info['sample_data']:
-                schema_context += f"{row}\n"
+        # schema_context += "\nSample Data:\n"
+        # if isinstance(info['sample_data'], list):
+        #     for row in info['sample_data']:
+        #         schema_context += f"{row}\n"
         schema_context += "\n---\n\n"
 
     prompt = f"""
