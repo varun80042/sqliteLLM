@@ -3,7 +3,7 @@ from openai import OpenAI
 
 # Point to the local server
 client1 = OpenAI(base_url="http://localhost:1234/v1", api_key="lm-studio")  # html to json
-model = r"D:/work/sem 7/Large Language Models/models/lmstudio-community/gemma-2-2b-it-GGUF/gemma-2-2b-it-Q4_K_M.gguf"
+model = r"/Users/karthiknamboori/.cache/lm-studio/models/lmstudio-community/gemma-2-2b-it-GGUF"
 
 # model = "MaziyarPanahi/Mistral-7B-Instruct-v0.3-GGUF/Mistral-7B-Instruct-v0.3.Q4_K_M.gguf:2"
 
